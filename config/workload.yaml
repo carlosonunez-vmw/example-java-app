@@ -6,6 +6,7 @@ metadata:
     apps.tanzu.vmware.com/workload-type: web
     apps.tanzu.vmware.com/auto-configure-actuators: "true"
     app.kubernetes.io/part-of: example-java-app
+    apps.tanzu.vmware.com/has-tests: "true"
 spec:
   params:
   - name: annotations

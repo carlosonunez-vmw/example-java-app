@@ -19,6 +19,6 @@ k8s_custom_deploy(
       sync('./target/classes', '/workspace/BOOT-INF/classes')
     ]
 )
-
+allow_k8s_contexts('arn:aws:eks:us-west-1:087368549112:cluster/ncarlos-20220321')
 k8s_resource('example-java-app', port_forwards=["8080:8080"],
             extra_pod_selectors=[{'carto.run/workload-name': 'example-java-app', 'app.kubernetes.io/component': 'run'}])
