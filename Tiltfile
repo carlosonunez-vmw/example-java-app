@@ -1,4 +1,4 @@
-SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='tapacr.azurecr.io/example-java-app-source')
+SOURCE_IMAGE = os.getenv("SOURCE_IMAGE")
 LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
 NAMESPACE = os.getenv("NAMESPACE", default='default')
 OUTPUT_TO_NULL_COMMAND = os.getenv("OUTPUT_TO_NULL_COMMAND", default=' > /dev/null ')
@@ -19,6 +19,6 @@ k8s_custom_deploy(
       sync('./target/classes', '/workspace/BOOT-INF/classes')
     ]
 )
-allow_k8s_contexts('arn:aws:eks:us-west-1:087368549112:cluster/ncarlos-20220321')
+allow_k8s_contexts("arn:aws:eks:us-east-2:141769181290:cluster/tap-cluster")
 k8s_resource('example-java-app', port_forwards=["8080:8080"],
             extra_pod_selectors=[{'carto.run/workload-name': 'example-java-app', 'app.kubernetes.io/component': 'run'}])
